@@ -10,7 +10,7 @@
 <svelte:head>
     <title>Alura Cook</title>
 </svelte:head>
-
+ 
 <div class="container-principal">
     <Cabecalho />
     
