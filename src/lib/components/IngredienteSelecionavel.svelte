@@ -1,12 +1,23 @@
 <script lang="ts">
-        import Tag from "./Tag.svelte";
+    import { createEventDispatcher } from "svelte";
+    import Tag from "./Tag.svelte";
 
-        export let ingrediente:string
-        let selecionado = false
+    const dispatch = createEventDispatcher<{
+        adicionarIngrediente:string,
+        removerIngrediente:string;
+    }>()
 
-        function AoClicar(){
-            selecionado = !selecionado
+    export let ingrediente: string;
+    let selecionado = false;
+
+    function AoClicar() {
+        selecionado = !selecionado
+        if (selecionado) {
+            dispatch('adicionarIngrediente', ingrediente);
+        }else{
+            dispatch('removerIngrediente', ingrediente)
         }
+    }
 </script>
 
 <button on:click={AoClicar}>
@@ -14,8 +25,7 @@
 </button>
 
 <style>
-    button{
+    button {
         cursor: pointer;
     }
 </style>
-
