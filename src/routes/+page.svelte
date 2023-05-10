@@ -1,39 +1,22 @@
 <script lang="ts">
     import "../app.css";
 
-    import Cabecalho from "$lib/components/Cabecalho.svelte";
+    import categorias from "$lib/json/categorias.json";
+    import { minhaLista } from "$lib/stores/minhaLista";
+
     import MinhaLista from "$lib/components/MinhaLista.svelte";
     import Titulo from "$lib/components/Titulo.svelte";
-
-    import categorias from "$lib/json/categorias.json";
     import Categoria from "$lib/components/Categoria.svelte";
     import Tag from "$lib/components/Tag.svelte";
-    import RodaPe from "$lib/components/RodaPe.svelte";
-
-    let minhaLista: string[] = [];
-
-    function adicionarIngrediente(evento: CustomEvent<string>) {
-        const ingrediente = evento.detail;
-        minhaLista = [...minhaLista, ingrediente];
-    }
-
-    function removerIngrediente(evento: CustomEvent<string>) {
-        const ingrediente = evento.detail;
-        minhaLista = minhaLista.filter((item) => item !== ingrediente);
-    }
 </script>
 
 <svelte:head>
     <title>Alura Cook</title>
 </svelte:head>
 
-<div class="container-principal">
-    <Cabecalho />
-
-    <div class="estilo-principal">
-        {#if minhaLista.length}
+        {#if $minhaLista.length}
             <div class="minha-lista-container">
-                <MinhaLista ingredientes={minhaLista} />
+                <MinhaLista/>
                 <div class="divisoria" />
             </div>
         {/if}
@@ -51,8 +34,6 @@
                     <li>
                         <Categoria
                             {categoria}
-                            on:adicionarIngrediente={adicionarIngrediente}
-                            on:removerIngrediente={removerIngrediente}
                         />
                     </li>
                 {/each}
@@ -64,35 +45,8 @@
                 </a>
             </div>
         </main>
-    </div>
-
-    <RodaPe/>
-
-</div>
 
 <style>
-    .container-principal {
-        display: flex;
-        flex-direction: column;
-        min-height: 100vh;
-    }
-
-    .estilo-principal {
-        text-align: center;
-        padding: 0 5vw 3.375rem;
-        flex: 1;
-    }
-
-    .minha-lista-container {
-        margin-bottom: 2rem;
-    }
-    .divisoria {
-        width: 40vw;
-        height: 2px;
-        background-color: var(--verde);
-        margin: 0 auto;
-    }
-
     .info {
         margin-bottom: 3.375rem;
     }
