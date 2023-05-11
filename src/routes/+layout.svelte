@@ -1,12 +1,22 @@
 <script>
     import Cabecalho from "$lib/components/Cabecalho.svelte";
+    import MinhaLista from "$lib/components/MinhaLista.svelte";
     import RodaPe from "$lib/components/RodaPe.svelte";
+
+    import { minhaLista } from "$lib/stores/minhaLista";
 </script>
 
 <div class="container-principal">
     <Cabecalho />
 
     <div class="estilo-principal">
+        {#if $minhaLista.length}
+            <div class="minha-lista-container">
+                <MinhaLista/>
+                <div class="divisoria" />
+            </div>
+        {/if}
+
         <slot />
     </div>
 
@@ -26,7 +36,7 @@
         flex: 1;
     }
 
-    /* .minha-lista-container {
+    .minha-lista-container {
         margin-bottom: 2rem;
     }
     .divisoria {
@@ -34,5 +44,5 @@
         height: 2px;
         background-color: var(--verde);
         margin: 0 auto;
-    } */
+    }
 </style>

@@ -3,23 +3,25 @@
 
     import categorias from "$lib/json/categorias.json";
     import { minhaLista } from "$lib/stores/minhaLista";
+    import { beforeNavigate } from "$app/navigation";
 
     import MinhaLista from "$lib/components/MinhaLista.svelte";
     import Titulo from "$lib/components/Titulo.svelte";
     import Categoria from "$lib/components/Categoria.svelte";
     import Tag from "$lib/components/Tag.svelte";
+
+    $: listaVazia = $minhaLista.length === 0
+
+    beforeNavigate((navigation) => {
+        if (listaVazia && navigation.to?.url) {
+            navigation.cancel();
+        }
+    })
 </script>
 
 <svelte:head>
     <title>Alura Cook</title>
 </svelte:head>
-
-        {#if $minhaLista.length}
-            <div class="minha-lista-container">
-                <MinhaLista/>
-                <div class="divisoria" />
-            </div>
-        {/if}
 
         <main>
             <Titulo tag="h1">Ingredientes</Titulo>
@@ -32,21 +34,25 @@
             <ul class="categorias">
                 {#each categorias as categoria (categoria.nome)}
                     <li>
-                        <Categoria
-                            {categoria}
-                        />
+                        <Categoria {categoria}/>
                     </li>
                 {/each}
             </ul>
 
             <div class="buscar-receitas">
                 <a href="/receitas">
-                    <Tag ativa={true} tamanho='lg'>Buscar Receitas</Tag>
+                    <Tag 
+                        ativa={true} 
+                        tamanho='lg'
+                        desabilitada={listaVazia}
+                        >Buscar Receitas
+                    </Tag>
                 </a>
             </div>
         </main>
 
 <style>
+
     .info {
         margin-bottom: 3.375rem;
     }

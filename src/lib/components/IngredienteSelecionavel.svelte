@@ -3,15 +3,13 @@
     import Tag from "./Tag.svelte";
 
     export let ingrediente: string;
-    let selecionado = false;
+    $: selecionado = $minhaLista.includes(ingrediente);
 
     function AoClicar() {
-        selecionado = !selecionado;
-
-        if (selecionado) {
-            $minhaLista = [...$minhaLista, ingrediente];
+        if (!selecionado) {
+            minhaLista.adicionarIngrediente(ingrediente)
         } else {
-            $minhaLista = $minhaLista.filter((item) => item !== ingrediente);
+            minhaLista.removerIngrediente(ingrediente)
         }
     }
 </script>
