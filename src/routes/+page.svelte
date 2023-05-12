@@ -5,11 +5,10 @@
     import { minhaLista } from "$lib/stores/minhaLista";
     import { beforeNavigate } from "$app/navigation";
 
-    import MinhaLista from "$lib/components/MinhaLista.svelte";
-    import Titulo from "$lib/components/Titulo.svelte";
-    import Categoria from "$lib/components/Categoria.svelte";
-    import Tag from "$lib/components/Tag.svelte";
-
+    import MinhaLista from "$lib/components/paginas/layout/layout/MinhaLista.svelte";
+    import Titulo from "$lib/components/compartilhados/Titulo.svelte";
+    import Tag from "$lib/components/compartilhados/Tag.svelte";
+    import Categoria from "$lib/components/paginas/index/Categoria.svelte";
     $: listaVazia = $minhaLista.length === 0
 
     beforeNavigate((navigation) => {

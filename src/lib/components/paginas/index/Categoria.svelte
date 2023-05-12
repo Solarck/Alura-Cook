@@ -1,10 +1,13 @@
 <script lang="ts">
-    import type ICategoria from "$lib/interfaces/ICategoria";
+    import Card from "../../compartilhados/Card.svelte";
     import IngredienteSelecionavel from "./IngredienteSelecionavel.svelte";
 
+    import type ICategoria from "$lib/interfaces/ICategoria";
+    
     export let categoria: ICategoria;
 </script>
 
+<Card> 
 <div class="categoria-container">
     <img
         src="/icones/categorias_ingredientes/{categoria.imagem}"
@@ -23,13 +26,10 @@
         {/each}
     </ul>
 </div>
+</Card>
 
 <style>
     .categoria-container {
-        width: 300px;
-        min-height: 100%;
-        background: var(--branco);
-        box-shadow: 4px 4px 10px 1px rgba(0, 0, 0, 0.1);
         padding: 0.75rem 0.5rem;
     }
  

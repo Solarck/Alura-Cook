@@ -1,7 +1,7 @@
 <script>
-    import Cabecalho from "$lib/components/Cabecalho.svelte";
-    import MinhaLista from "$lib/components/MinhaLista.svelte";
-    import RodaPe from "$lib/components/RodaPe.svelte";
+    import Cabecalho from "$lib/components/paginas/layout/Cabecalho.svelte";
+    import MinhaLista from "$lib/components/paginas/layout/MinhaLista.svelte";
+    import RodaPe from "$lib/components/paginas/layout/RodaPe.svelte";
 
     import { minhaLista } from "$lib/stores/minhaLista";
 </script>
@@ -12,7 +12,7 @@
     <div class="estilo-principal">
         {#if $minhaLista.length}
             <div class="minha-lista-container">
-                <MinhaLista/>
+                <MinhaLista />
                 <div class="divisoria" />
             </div>
         {/if}
