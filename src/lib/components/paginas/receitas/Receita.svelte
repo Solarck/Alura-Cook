@@ -7,13 +7,13 @@
 
 <Card>
     <img
-        src="/imagens\receitas\{receita.imagem}"
+        src="/imagens/receitas/{receita.imagem}"
         alt="{receita.nome}"
         class="receita-img"
     />
-
+    
     <div class="receita-info">
-        <h3 class="receita-nome">Alho Assado</h3>
+        <h3 class="receita-nome">{receita.nome}</h3>
     </div>
 </Card>
 

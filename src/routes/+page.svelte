@@ -5,10 +5,10 @@
     import { minhaLista } from "$lib/stores/minhaLista";
     import { beforeNavigate } from "$app/navigation";
 
-    import MinhaLista from "$lib/components/paginas/layout/layout/MinhaLista.svelte";
     import Titulo from "$lib/components/compartilhados/Titulo.svelte";
     import Tag from "$lib/components/compartilhados/Tag.svelte";
     import Categoria from "$lib/components/paginas/index/Categoria.svelte";
+    import TagLink from "$lib/components/compartilhados/TagLink.svelte";
     $: listaVazia = $minhaLista.length === 0
 
     beforeNavigate((navigation) => {
@@ -33,20 +33,15 @@
             <ul class="categorias">
                 {#each categorias as categoria (categoria.nome)}
                     <li>
-                        <Categoria {categoria}/>
+                        <Categoria
+                        {categoria}
+                        />
                     </li>
                 {/each}
             </ul>
 
             <div class="buscar-receitas">
-                <a href="/receitas">
-                    <Tag 
-                        ativa={true} 
-                        tamanho='lg'
-                        desabilitada={listaVazia}
-                        >Buscar Receitas
-                    </Tag>
-                </a>
+                <TagLink href="/receitas" desabilitada={listaVazia}>Buscar Receitas!</TagLink>
             </div>
         </main>
 
