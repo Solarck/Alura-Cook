@@ -1,16 +1,12 @@
 <script lang="ts">
     export let ativa = false;
-    export let tamanho: 'md' | 'lg' = 'md'
-    export let desabilitada = false
+    export let tamanho: "md" | "lg" = "md";
+    export let desabilitada = false;
 </script>
 
-<div
-    class="tag {tamanho}"
-    class:ativa
-    class:desabilitada>
-    <slot></slot>
+<div class="tag {tamanho}" class:ativa class:desabilitada>
+    <slot />
 </div>
-
 
 <style>
     .tag {
@@ -30,11 +26,11 @@
         background-color: var(--laranja);
     }
 
-    .lg{
-      font-size: 1.25rem;
-      padding: 1rem 1.5rem;  
+    .lg {
+        font-size: 1.25rem;
+        padding: 1rem 1.5rem;
     }
-    .desabilitada{
+    .desabilitada {
         opacity: 0.8;
         cursor: default;
     }

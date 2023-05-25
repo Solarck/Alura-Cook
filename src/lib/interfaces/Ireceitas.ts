@@ -1,5 +1,5 @@
 export default interface IReceita {
-    nome: string;
-    ingredientes: string[];
-    imagem: string;
+  nome: string
+  ingredientes: string[]
+  imagem: string
 }
